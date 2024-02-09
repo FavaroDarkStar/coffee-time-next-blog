@@ -7,11 +7,11 @@ Este projeto foi desenvolvido como parte do desafio **Criando o Seu Blog Pessoal
 ![Post LightMode](./public/preview3.png)
 
 ## Descrição
-O projeto foi gerado a partir de [netlify-templates/nextjs-blog-theme](https://github.com/netlify-templates/nextjs-blog-theme). O blog consome uma api do Supabase que contém os dados das publicações.
+O projeto foi gerado a partir de [netlify-templates/nextjs-blog-theme](https://github.com/netlify-templates/nextjs-blog-theme). O blog consome uma api do Supabase que contém os dados das publicações. O conteúdo dos posts foram gerados por meio do ChatGPT.
 
 ## Funcionalidades
-- Lista algumas informações sobre as publicações;
-- Visualiza todas as informações de uma publicação;
+- Lista todas as publicações ordenadas por data;
+- Exibe todas as informações de uma publicação;
 
 ## Como usar
 
@@ -46,6 +46,5 @@ O projeto foi gerado a partir de [netlify-templates/nextjs-blog-theme](https://g
    yarn run dev
    ```
 
-
-7. Abra o navegador e acesse [http://localhost:3000](http://localhost:3000) para visualizar o aplicativo em ação.
+6. Abra o navegador e acesse [http://localhost:3000](http://localhost:3000) para visualizar o aplicativo em ação.
 
