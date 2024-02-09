@@ -8,6 +8,7 @@ import {api} from '../services/api'
 
 export const getPosts = async() => {
   const {data} = await api.get('/posts');
+  data.sort((a,b) => new Date(b.created_at) - new Date(a.created_at));
   return data;
 };
 
@@ -23,3 +24,4 @@ export const getPostById = async (id) => {
 
   return { mdxSource, data };
 };
+
