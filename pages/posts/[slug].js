@@ -4,6 +4,7 @@ import {
   getPostBySlug,
   getPreviousPostBySlug,
   postFilePaths,
+  getPosts,
 } from '../../utils/mdx-utils';
 
 import { MDXRemote } from 'next-mdx-remote';
@@ -15,6 +16,9 @@ import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import Layout, { GradientBackground } from '../../components/Layout';
 import SEO from '../../components/SEO';
+import { useRouter } from 'next/router';
+
+import {api} from '../../services/api';
 
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
@@ -34,7 +38,9 @@ export default function PostPage({
   prevPost,
   nextPost,
   globalData,
+  
 }) {
+  
   return (
     <Layout>
       <SEO
@@ -57,7 +63,7 @@ export default function PostPage({
           </article>
         </main>
         <div className="grid md:grid-cols-2 lg:-mx-24 mt-12">
-          {prevPost && (
+          {/* {prevPost && (
             <Link href={`/posts/${prevPost.slug}`}>
               <a className="py-8 px-10 text-center md:text-right first:rounded-t-lg md:first:rounded-tr-none md:first:rounded-l-lg last:rounded-r-lg first last:rounded-b-lg backdrop-blur-lg bg-white dark:bg-black dark:bg-opacity-30 bg-opacity-10 hover:bg-opacity-20 dark:hover:bg-opacity-50 transition border border-gray-800 dark:border-white border-opacity-10 dark:border-opacity-10 last:border-t md:border-r-0 md:last:border-r md:last:rounded-r-none flex flex-col">
                 <p className="uppercase text-gray-500 mb-4 dark:text-white dark:opacity-60">
@@ -82,7 +88,7 @@ export default function PostPage({
                 <ArrowIcon className="mt-auto mx-auto md:ml-0" />
               </a>
             </Link>
-          )}
+          )} */}
         </div>
       </article>
       <Footer copyrightText={globalData.footerText} />
@@ -99,31 +105,31 @@ export default function PostPage({
 }
 
 export const getStaticProps = async ({ params }) => {
+  console.log(params)
   const globalData = getGlobalData();
   const { mdxSource, data } = await getPostBySlug(params.slug);
-  const prevPost = getPreviousPostBySlug(params.slug);
-  const nextPost = getNextPostBySlug(params.slug);
+  // const prevPost = getPreviousPostBySlug(params.slug);
+  // const nextPost = getNextPostBySlug(params.slug);
 
   return {
     props: {
       globalData,
       source: mdxSource,
       frontMatter: data,
-      prevPost,
-      nextPost,
+      // prevPost,
+      // nextPost,
     },
   };
 };
 
 export const getStaticPaths = async () => {
-  const paths = postFilePaths
-    // Remove file extensions for page paths
-    .map((path) => path.replace(/\.mdx?$/, ''))
-    // Map the path into the static paths object required by Next.js
-    .map((slug) => ({ params: { slug } }));
+  const posts = await getPosts(); // Obtenha todos os posts do seu backend ou banco de dados
+  const paths = posts.map((post) => ({
+    params: { slug: post.filePath.replace(/\.mdx?$/, '') }, // Crie o caminho usando o slug do post
+  }));
 
   return {
     paths,
-    fallback: false,
+    fallback: false, // Se fallback for true, o Next.js tentará gerar as páginas sob demanda
   };
 };
