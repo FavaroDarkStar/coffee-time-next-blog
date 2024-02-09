@@ -8,7 +8,7 @@ Este projeto foi desenvolvido como parte do desafio **Criando o Seu Blog Pessoal
 ![Feed](./public/preview4.png)
 
 ## Descrição
-O projeto foi gerado a partir de [netlify-templates/nextjs-blog-theme](https://github.com/netlify-templates/nextjs-blog-theme). O blog está consumindo uma api no Supabase para carregar os posts que estão salvos em um banco de dados.
+O projeto foi gerado a partir de [netlify-templates/nextjs-blog-theme](https://github.com/netlify-templates/nextjs-blog-theme). O blog consome uma api do Supabase que contém os dados das publicações.
 
 ## Funcionalidades
 - Lista algumas informações sobre as publicações;
