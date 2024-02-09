@@ -2,10 +2,9 @@
 
 Este projeto foi desenvolvido como parte do desafio **Criando o Seu Blog Pessoal Com Next.js - Digital Innovation One**.
 
-![Home](./public/preview1.png)
-![Login](./public/preview2.png)
-![SignUp](./public/preview3.png)
-![Feed](./public/preview4.png)
+![Home DarkMode](./public/preview1.png)
+![Post DarkMode](./public/preview2.png)
+![Post LightMode](./public/preview3.png)
 
 ## Descrição
 O projeto foi gerado a partir de [netlify-templates/nextjs-blog-theme](https://github.com/netlify-templates/nextjs-blog-theme). O blog consome uma api do Supabase que contém os dados das publicações.
